@@ -1,7 +1,7 @@
-streamlit
-whisper
-pyttsx3
-numpy
-opencv-python
-tflite-runtime
+streamlit==1.46.1
+openai-whisper==20230314
+pyttsx3==2.98
+numpy==1.24.4
+opencv-python==4.8.0.76
+tflite-runtime==2.13.0
 
