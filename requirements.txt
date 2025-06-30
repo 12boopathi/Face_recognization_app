@@ -1,0 +1,7 @@
+streamlit
+whisper
+pyttsx3
+numpy
+opencv-python
+tflite-runtime
+
