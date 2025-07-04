@@ -1,14 +1,22 @@
-
 # 🎯 Advanced Face Recognition App
 
 A Streamlit-based AI-powered **Face Recognition System** that uses voice commands, live webcam feed, and TTS for an interactive experience. It integrates real-time face detection and recognition with the ability to add or delete faces from a voice-controlled database.
+
 ---
 
 ![Demo Image](output.png)
-
 ![Demo Image](output_1.png)
 
 ---
+
+## ✅ Platform Compatibility
+
+This project is designed to run on:
+
+- 💻 **Standard PC/Laptop (x86_64)**
+- 🧠 **PhyCORE-i.MX8M Plus SOM** with **VeriSilicon VIP8000 NPU**
+
+> ✅ The TFLite models are **INT8 quantized** and optimized to run with **VX Delegate** for hardware acceleration on VeriSilicon NPU.
 
 ---
 
@@ -23,13 +31,14 @@ A Streamlit-based AI-powered **Face Recognition System** that uses voice command
 - 🗣️ **Speech-to-Text** via OpenAI's Whisper for accurate voice transcription.
 - 🖼️ **Webcam support** for live feed and face operations.
 - 🎛️ **Interactive Streamlit interface** with device selection panel.
+- ⚡ **NPU acceleration** for face detection and recognition on i.MX8M Plus via **TFLite + VX Delegate**.
 
 ---
 
 ## 📦 Requirements
 
 - Python 3.7+
-- Linux-based OS (Ubuntu recommended)
+- Linux-based OS (Ubuntu or Yocto-based)
 - Webcam and microphone
 - TFLite Models:
   - `yoloface_int8.tflite`
@@ -64,14 +73,18 @@ pip install streamlit opencv-python-headless pyttsx3 openai-whisper numpy
 sudo apt-get install ffmpeg libportaudio2 arecord aplay
 ```
 
+> 🧠 On **PhyBoard-i.MX8M Plus**, make sure your environment includes `libvx_delegate.so` and NPU runtime libraries.
+
 ---
 
 ## 🧠 Model Setup
 
 Place the following model files in the project root:
 
-* `yoloface_int8.tflite` – Face detection
-* `facenet_512_int_quantized.tflite` – Face recognition
+* `yoloface_int8.tflite` – Face detection (INT8 optimized)
+* `facenet_512_int_quantized.tflite` – Face recognition (INT8 optimized)
+
+> On i.MX8M Plus, these models are accelerated using **VeriSilicon VIP8000 NPU** via the **VX Delegate** interface in TFLite.
 
 ---
 
@@ -115,12 +128,12 @@ aplay -l     # To list output devices
 
 ```text
 .
-├── main.py                 # Main Streamlit app
-├── face_detection.py       # YOLO model wrapper
-├── face_recognition.py     # FaceNet model wrapper
-├── face_database.py        # Face DB management
-├── facenet_512_int_quantized.tflite
-├── yoloface_int8.tflite
+├── main.py                      # Main Streamlit app
+├── face_detection.py            # YOLO model wrapper
+├── face_recognition.py          # FaceNet model wrapper
+├── face_database.py             # Face DB management
+├── yoloface_int8.tflite         # Face detection model (INT8)
+├── facenet_512_int_quantized.tflite  # Face recognition model (INT8)
 └── README.md
 ```
 
@@ -131,6 +144,7 @@ aplay -l     # To list output devices
 * **Microphone not working?** Check if `arecord` detects it.
 * **No audio output?** Check your ALSA playback device and permissions.
 * **No camera?** Make sure OpenCV can access your webcam (`/dev/video0`).
+* **TFLite VX Delegate not working?** Check if NPU drivers and `libvx_delegate.so` are correctly installed.
 
 ---
 
@@ -140,18 +154,12 @@ aplay -l     # To list output devices
 * [YOLO-Face](https://github.com/sthanhng/yoloface)
 * [FaceNet TFLite Model](https://github.com/davidsandberg/facenet)
 * [Streamlit](https://streamlit.io/)
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more info.
+* [VeriSilicon VIP8000 NPU](https://www.verisilicon.com/)
 
 ---
 
 ## 👤 Author
 
-Boobathi Karuppaiya
-[GitHub Profile](https://github.com/12boopathi)
+**Boobathi Karuppaiya**
+🔗 [GitHub Profile](https://github.com/12boopathi)
 
-````
